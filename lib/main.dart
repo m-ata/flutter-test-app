@@ -17,11 +17,13 @@ class MyApp extends StatelessWidget {
           child: Icon(Icons.add),
         ),
         body: Center(
-          child: FlatButton.icon(
-            icon: Icon(Icons.payment, color: Colors.white,),
-            label: Text('Proceed', style: TextStyle(color: Colors.white),),
-            color: Colors.blue,
-            onPressed: (){},
+          child: Column(
+            children: [
+              Text('Text1'),
+              Text('Text2'),
+              RaisedButton(onPressed: () {}, child: Text('Login', style: TextStyle(color: Colors.white)), color: Colors.blue,),
+              Text('Text3'),
+            ],
           )
       ),
     ),
