@@ -1,32 +1,63 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(MaterialApp(
+    title: 'My App',
+    home: SafeArea(
+      child: MyScaffoldWidget(),
+    ),
+  ));
 }
-class MyApp extends StatelessWidget {
+class MyAppBar extends StatelessWidget {
+  MyAppBar({this.title});
+
+  final Widget title;
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Sample App',
-      theme: ThemeData(primarySwatch: Colors.blue),
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Flutter App '),
-        ),
-        floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.add),
-        ),
-        body: Center(
-          child: Column(
-            children: [
-              Text('Text1'),
-              Text('Text2'),
-              RaisedButton(onPressed: () {}, child: Text('Login', style: TextStyle(color: Colors.white)), color: Colors.blue,),
-              Text('Text3'),
-            ],
+    return Container(
+      height: 56.0,
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+      decoration: BoxDecoration(color: Colors.blue),
+      child: Row(
+        children: <Widget>[
+          IconButton(
+              icon: (Icon(Icons.menu)),
+              onPressed: null,
+              tooltip: 'Navigation Menu',
+          ),
+          Expanded(
+              child: title
+          ),
+          IconButton(
+              icon: Icon(Icons.search),
+              tooltip: 'Search',
+              onPressed: null
           )
+        ],
       ),
-    ),
+    );
+  }
+}
+
+class MyScaffoldWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      child: Column(
+        children: <Widget>[
+          MyAppBar(
+            title: Text(
+              'Example Title',
+              style: Theme.of(context).primaryTextTheme.headline6,
+            ),
+          ),
+          Expanded(
+              child: Center(
+               child: Text('Hello World'),
+              )
+          )
+        ],
+      ),
     );
   }
 }
